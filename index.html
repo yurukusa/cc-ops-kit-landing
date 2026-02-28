@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code Production Hooks — Ops Kit</title>
+  <meta name="description" content="10 hooks + 5 templates from 108 hours of autonomous Claude Code operation. Covers 18/20 cc-health-check items. $4.99.">
+  <meta property="og:title" content="Claude Code Production Hooks — Ops Kit">
+  <meta property="og:description" content="10 hooks + 5 templates from 108 hours of autonomous operation. Stop your AI from breaking things silently.">
+  <meta property="og:type" content="website">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #7d8590;
+      --green: #39d353;
+      --orange: #f78166;
+      --blue: #79c0ff;
+      --yellow: #e3b341;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+      padding: 40px 24px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+
+    /* Header */
+    header { text-align: center; margin-bottom: 48px; }
+    .badge {
+      display: inline-block;
+      background: rgba(247,129,102,0.1);
+      color: var(--orange);
+      border: 1px solid rgba(247,129,102,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #f0f6fc;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 24px;
+    }
+    .price-block {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 24px;
+    }
+    .price { font-size: 2rem; font-weight: 800; color: var(--green); }
+    .price-note { font-size: 0.85rem; color: var(--muted); text-align: left; }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-block;
+      background: var(--orange);
+      color: #0d1117;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin-top: 24px;
+      transition: opacity 0.15s;
+    }
+    .cta-btn:hover { opacity: 0.9; }
+    .cta-sub { font-size: 0.8rem; color: var(--muted); margin-top: 10px; }
+
+    /* Stats */
+    .stats {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 48px 0;
+    }
+    .stat {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-n { font-size: 1.8rem; font-weight: 700; color: var(--orange); }
+    .stat-l { font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+
+    /* Problem */
+    .problem {
+      background: rgba(247,129,102,0.06);
+      border: 1px solid rgba(247,129,102,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+    .problem h2 { font-size: 1.1rem; color: var(--orange); margin-bottom: 12px; }
+    .problem ul { list-style: none; padding: 0; }
+    .problem li {
+      padding: 6px 0;
+      padding-left: 20px;
+      position: relative;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .problem li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+      font-weight: bold;
+    }
+
+    /* What's included */
+    h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; color: var(--text); }
+    .includes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .include-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .include-card h3 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .include-card ul { list-style: none; padding: 0; }
+    .include-card li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding: 3px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+    .include-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--border);
+    }
+
+    /* How it works */
+    .steps { margin-bottom: 40px; }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--green);
+      flex-shrink: 0;
+    }
+    .step-text { font-size: 0.9rem; color: var(--muted); }
+    .step-text strong { color: var(--text); }
+
+    /* Code block */
+    .code-block {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      color: #c9d1d9;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+
+    /* Health check CTA */
+    .health-cta {
+      background: rgba(57,211,83,0.06);
+      border: 1px solid rgba(57,211,83,0.2);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .health-cta-text { font-size: 0.9rem; color: var(--muted); }
+    .health-cta-text strong { color: var(--text); }
+    .health-link {
+      background: rgba(57,211,83,0.15);
+      color: var(--green);
+      border: 1px solid rgba(57,211,83,0.3);
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .health-link:hover { background: rgba(57,211,83,0.25); }
+
+    /* Bottom CTA */
+    .bottom-cta {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .includes-grid { grid-template-columns: 1fr; }
+      .stats { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="badge">Production-tested · 108 hours of autonomous AI</div>
+    <h1>Claude Code Production Hooks</h1>
+    <p class="tagline">10 hooks and 5 templates that keep autonomous Claude Code from breaking things silently. Every item exists because something went wrong without it.</p>
+    <div class="price-block">
+      <div class="price">$4.99</div>
+      <div class="price-note">One-time · Instant download<br>MIT License · No subscription</div>
+    </div>
+    <br>
+    <a href="https://yurukusa.gumroad.com/l/cc-codex-ops-kit" class="cta-btn" target="_blank">Download on Gumroad →</a>
+    <p class="cta-sub">Secure checkout via Gumroad · Zip file, unzip and copy</p>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-n">108h</div>
+      <div class="stat-l">of autonomous operation tested on</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3,400+</div>
+      <div class="stat-l">AI sessions these hooks survived</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">18/20</div>
+      <div class="stat-l">cc-health-check items covered</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">10+5</div>
+      <div class="stat-l">hooks + operational templates</div>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <div class="problem">
+    <h2>Without production hooks, autonomous Claude Code:</h2>
+    <ul>
+      <li>Runs out of context and fails silently in the middle of a task</li>
+      <li>Edits files with Python syntax errors and keeps working as if nothing happened</li>
+      <li>Constructs raw WebSocket CDP connections that hang the session</li>
+      <li>Pushes directly to main without checking</li>
+      <li>Takes actions that require external services when it has unresolved errors</li>
+      <li>Has no structured record of what it actually did</li>
+    </ul>
+  </div>
+
+  <!-- Health check -->
+  <div class="health-cta">
+    <div class="health-cta-text">
+      <strong>Not sure what you need?</strong> Run cc-health-check first — free, browser-based, no install. See your current score across 20 checks.
+    </div>
+    <a href="https://yurukusa.github.io/cc-health-check/" class="health-link" target="_blank">Run cc-health-check →</a>
+  </div>
+
+  <!-- What's included -->
+  <h2>What's included</h2>
+  <div class="includes-grid">
+    <div class="include-card">
+      <h3>10 Production Hooks</h3>
+      <ul>
+        <li>Context window monitor (graduated warnings)</li>
+        <li>Activity logger (JSONL audit trail)</li>
+        <li>Syntax checker (Python, Shell, JS, JSON, YAML)</li>
+        <li>Decision warning (sensitive path alerts)</li>
+        <li>CDP safety (blocks raw WebSocket construction)</li>
+        <li>Session proof logger (5W1H daily summaries)</li>
+        <li>Session start marker</li>
+        <li>No-ask-human (autonomous mode enforcer)</li>
+        <li>Branch guard (blocks direct push to main)</li>
+        <li>Error gate (blocks external actions on errors)</li>
+      </ul>
+    </div>
+    <div class="include-card">
+      <h3>5 Operational Templates</h3>
+      <ul>
+        <li>CLAUDE-autonomous.md — rules for unsupervised execution</li>
+        <li>dod-checklists.md — 4-type Definition of Done</li>
+        <li>task-queue.yaml — structured task queue</li>
+        <li>mission.md — persistent state across restarts</li>
+        <li>LESSONS.md — structured incident log</li>
+      </ul>
+      <br>
+      <h3>3 Config Examples</h3>
+      <ul>
+        <li>Minimal (context + syntax)</li>
+        <li>Recommended (all core hooks)</li>
+        <li>Full autonomous mode</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <h2>How to install</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>Download and unzip.</strong> All files are plain shell scripts and Markdown templates.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Copy hooks to <code style="background:#21262d;padding:1px 5px;border-radius:3px">~/.claude/hooks/</code></strong> and make them executable.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text"><strong>Copy templates to your ops directory.</strong> Edit to match your project.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text"><strong>Run cc-health-check</strong> to confirm your score improved.</div>
+    </div>
+  </div>
+
+  <div class="code-block"># Install (from the unzipped directory)
+cp hooks/* ~/.claude/hooks/ && chmod +x ~/.claude/hooks/*.sh
+cp templates/mission.md ~/ops/mission.md
+cp templates/task-queue.yaml ~/ops/task-queue.yaml</div>
+
+  <!-- Bottom CTA -->
+  <div class="bottom-cta">
+    <h2 style="margin-bottom:12px">Ready to run Claude Code autonomously?</h2>
+    <p style="color:var(--muted);margin-bottom:24px;font-size:0.9rem">108 hours of testing went into this kit so you don't have to learn the hard way.</p>
+    <a href="https://yurukusa.gumroad.com/l/cc-codex-ops-kit" class="cta-btn" target="_blank" style="font-size:1.1rem;padding:16px 40px">Get the Ops Kit — $4.99 →</a>
+    <p class="cta-sub" style="margin-top:12px">Part of <a href="https://yurukusa.github.io/cc-toolkit/" style="color:var(--muted)">cc-toolkit</a> · Check your setup first with <a href="https://yurukusa.github.io/cc-health-check/" style="color:var(--muted)">cc-health-check (free)</a></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>Built by <a href="https://github.com/yurukusa">yurukusa</a> · <a href="https://yurukusa.github.io/cc-toolkit/">cc-toolkit</a> · <a href="https://github.com/yurukusa/cc-health-check">cc-health-check</a></p>
+</footer>
+</body>
+</html>
