@@ -9,7 +9,11 @@
   <meta property="og:description" content="10 hooks + 6 templates + 3 tools. Production-ready in 15 minutes. From 140+ hours of autonomous operation.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yurukusa.github.io/cc-ops-kit-landing/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://yurukusa.github.io/cc-ops-kit-landing/og-image.png">
+  <meta property="og:image:width" content="1309">
+  <meta property="og:image:height" content="886">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://yurukusa.github.io/cc-ops-kit-landing/og-image.png">
   <meta name="twitter:title" content="Claude Code Production Hooks — $19">
   <meta name="twitter:description" content="10 hooks + 6 templates + 3 tools. Production-ready in 15 minutes. From 140+ hours of autonomous Claude Code operation.">
   <meta name="twitter:site" content="@yurukusa_dev">
@@ -279,9 +283,17 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
     @media (max-width: 600px) {
       h1 { font-size: 1.5rem; }
       .includes-grid { grid-template-columns: 1fr; }
+      .before-after { grid-template-columns: 1fr; }
       .stats { flex-direction: column; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); }
       .stat:last-child { border-bottom: none; }
@@ -338,7 +350,7 @@
   </div>
 
   <!-- Before/After -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px">
+  <div class="before-after">
     <div class="problem" style="margin-bottom:0">
       <h2>Before: Fresh install</h2>
       <p style="font-size:2rem;font-weight:800;color:var(--orange);margin:8px 0">16/19</p>
