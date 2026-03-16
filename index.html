@@ -348,6 +348,13 @@
       </ul>
     </div>
     <div class="include-card">
+      <h3 style="color:var(--orange)">3 Exclusive Tools (not in the free version)</h3>
+      <ul>
+        <li><strong style="color:var(--text)">Watchdog</strong> — detects hung/idle sessions and auto-recovers</li>
+        <li><strong style="color:var(--text)">CLAUDE.md Generator</strong> — builds project-specific rules from your codebase</li>
+        <li><strong style="color:var(--text)">Risk Score</strong> — pre-flight safety check before autonomous runs</li>
+      </ul>
+      <br>
       <h3>6 Operational Templates</h3>
       <ul>
         <li>CLAUDE-autonomous.md — rules for unsupervised execution</li>
@@ -355,14 +362,7 @@
         <li>task-queue.yaml — structured task queue</li>
         <li>mission.md — persistent state across restarts</li>
         <li>LESSONS.md — structured incident log</li>
-        <li>settings.json — 3 pre-tested permission configs</li>
-      </ul>
-      <br>
-      <h3>3 Config Examples</h3>
-      <ul>
-        <li>Minimal (context + syntax)</li>
-        <li>Recommended (all core hooks)</li>
-        <li>Full autonomous mode</li>
+        <li>settings.json — 3 pre-tested configs (minimal / standard / autonomous)</li>
       </ul>
     </div>
   </div>
@@ -376,11 +376,11 @@
     </div>
     <div class="step">
       <div class="step-num">2</div>
-      <div class="step-text"><strong>Copy hooks to <code style="background:#21262d;padding:1px 5px;border-radius:3px">~/.claude/hooks/</code></strong> and make them executable.</div>
+      <div class="step-text"><strong>Run <code style="background:#21262d;padding:1px 5px;border-radius:3px">bash install.sh</code></strong> — copies hooks, sets permissions, installs templates.</div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-text"><strong>Copy templates to your ops directory.</strong> Edit to match your project.</div>
+      <div class="step-text"><strong>Pick a settings preset</strong> (minimal, recommended, or autonomous) and paste into your <code style="background:#21262d;padding:1px 5px;border-radius:3px">settings.json</code>.</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
@@ -388,10 +388,11 @@
     </div>
   </div>
 
-  <div class="code-block"># Install (from the unzipped directory)
-cp hooks/* ~/.claude/hooks/ && chmod +x ~/.claude/hooks/*.sh
-cp templates/mission.md ~/ops/mission.md
-cp templates/task-queue.yaml ~/ops/task-queue.yaml</div>
+  <div class="code-block"># One command — done in 15 minutes
+bash install.sh
+# Or manually:
+# cp hooks/* ~/.claude/hooks/ && chmod +x ~/.claude/hooks/*.sh
+# cp templates/* ~/ops/</div>
 
   <!-- Bottom CTA -->
   <div class="bottom-cta">
