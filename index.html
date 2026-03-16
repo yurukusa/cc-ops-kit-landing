@@ -297,8 +297,8 @@
       <div class="stat-l">cc-health-check items covered</div>
     </div>
     <div class="stat">
-      <div class="stat-n">10+5</div>
-      <div class="stat-l">hooks + operational templates</div>
+      <div class="stat-n">19</div>
+      <div class="stat-l">hooks + templates + tools</div>
     </div>
   </div>
 
@@ -313,6 +313,12 @@
       <li>Takes actions that require external services when it has unresolved errors</li>
       <li>Has no structured record of what it actually did</li>
     </ul>
+  </div>
+
+  <!-- Why pay -->
+  <div class="problem" style="background:rgba(57,211,83,0.06);border-color:rgba(57,211,83,0.2);">
+    <h2 style="color:var(--green)">Why pay when claude-code-hooks is free on GitHub?</h2>
+    <p style="font-size:0.9rem;color:var(--muted);margin-bottom:12px">The free repo gives you 10 hooks and 5 templates. You configure them yourself. The Ops Kit gives you the same hooks <strong style="color:var(--text)">plus 3 exclusive tools</strong> (watchdog, CLAUDE.md generator, risk-score), <strong style="color:var(--text)">a one-command installer</strong>, 3 pre-tested settings.json configs, and a step-by-step deployment guide. Free = parts. Ops Kit = tested, configured, running in 15 minutes.</p>
   </div>
 
   <!-- Health check -->
@@ -342,13 +348,14 @@
       </ul>
     </div>
     <div class="include-card">
-      <h3>5 Operational Templates</h3>
+      <h3>6 Operational Templates</h3>
       <ul>
         <li>CLAUDE-autonomous.md — rules for unsupervised execution</li>
         <li>dod-checklists.md — 4-type Definition of Done</li>
         <li>task-queue.yaml — structured task queue</li>
         <li>mission.md — persistent state across restarts</li>
         <li>LESSONS.md — structured incident log</li>
+        <li>settings.json — 3 pre-tested permission configs</li>
       </ul>
       <br>
       <h3>3 Config Examples</h3>
