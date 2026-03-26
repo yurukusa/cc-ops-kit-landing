@@ -14,7 +14,7 @@
   <meta property="og:image:height" content="886">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://yurukusa.github.io/cc-ops-kit-landing/og-image.png">
-  <meta name="twitter:title" content="Claude Code Production Hooks — $19">
+  <meta name="twitter:title" content="Claude Code Production Hooks — Pay What You Want">
   <meta name="twitter:description" content="16 hooks + 5 templates + 3 tools. Production-ready in 15 minutes. From 700+ hours of autonomous Claude Code operation.">
   <meta name="twitter:site" content="@yurukusa_dev">
   <link rel="canonical" href="https://yurukusa.github.io/cc-ops-kit-landing/">
@@ -314,6 +314,7 @@
     <br>
     <a href="https://yurukusa.gumroad.com/l/pkbbl?utm_source=landing&utm_medium=page&utm_campaign=ops-kit" class="cta-btn" target="_blank">Download on Gumroad →</a>
     <p class="cta-sub">Secure checkout via Gumroad · Zip file, unzip and copy</p>
+    <p class="cta-sub" style="margin-top:8px"><a href="https://yurukusa.github.io/cc-health-check/" style="color:var(--green);text-decoration:underline" target="_blank">Not sure yet? Check your setup score first (free) →</a></p>
   </header>
 
   <!-- Stats -->
@@ -369,12 +370,13 @@
     <p style="font-size:0.9rem;color:var(--muted);margin-bottom:12px">The free repo gives you 16 hooks and 5 templates. You configure them yourself. The Ops Kit gives you the same hooks <strong style="color:var(--text)">plus 3 exclusive tools</strong> (watchdog, CLAUDE.md generator, risk-score), <strong style="color:var(--text)">a one-command installer</strong>, 3 pre-tested settings.json configs, and a step-by-step deployment guide. Free = parts. Ops Kit = tested, configured, running in 15 minutes.</p>
   </div>
 
-  <!-- Health check -->
-  <div class="health-cta">
+  <!-- Health check — prominent placement -->
+  <div class="health-cta" style="background:rgba(57,211,83,0.08);border:1px solid rgba(57,211,83,0.3);padding:24px;border-radius:12px;margin-bottom:32px">
     <div class="health-cta-text">
-      <strong>Not sure what you need?</strong> Run cc-health-check first — free, browser-based, no install. See your current score across 20 checks.
+      <strong style="font-size:1.1rem">Step 1: Check your current score (free)</strong><br>
+      <span style="color:var(--muted)">Run <code style="background:#21262d;padding:1px 5px;border-radius:3px">npx cc-health-check</code> or use the browser version — 20 checks, zero install. See exactly what's missing before you decide.</span>
     </div>
-    <a href="https://yurukusa.github.io/cc-health-check/" class="health-link" target="_blank">Run cc-health-check →</a>
+    <a href="https://yurukusa.github.io/cc-health-check/" class="health-link" target="_blank" style="font-size:1rem;padding:10px 24px">Run cc-health-check (free) →</a>
   </div>
 
   <!-- What's included -->
@@ -452,7 +454,7 @@ bash install.sh
   <div class="problem" style="background:rgba(121,192,255,0.06);border-color:rgba(121,192,255,0.2);margin-bottom:0">
     <h2 style="color:var(--blue)">Built from real autonomous sessions, not theory</h2>
     <p style="font-size:0.9rem;color:var(--muted);margin-bottom:8px">Every hook exists because something actually broke during 700+ hours of unattended Claude Code operation. The context monitor was added after a session silently lost all state at tool call 160. The syntax checker was added after a Python error cascaded through 30+ files. The error gate was added after Claude posted broken output to an external API.</p>
-    <p style="font-size:0.9rem;color:var(--muted)">The same hooks and templates are running right now in production — powering the autonomous development of <a href="https://github.com/yurukusa/cc-safe-setup" style="color:var(--blue)">cc-safe-setup</a> (10,000+ npm downloads/day, 1,000+ tests) and the entire <a href="https://yurukusa.github.io/cc-toolkit/" style="color:var(--blue)">cc-toolkit</a> ecosystem.</p>
+    <p style="font-size:0.9rem;color:var(--muted)">The same hooks and templates are running right now in production — powering the autonomous development of <a href="https://github.com/yurukusa/cc-safe-setup" style="color:var(--blue)">cc-safe-setup</a> (10,000+ npm downloads/day, 1,030+ tests) and the entire <a href="https://yurukusa.github.io/cc-toolkit/" style="color:var(--blue)">cc-toolkit</a> ecosystem.</p>
   </div>
 
   <div class="bottom-cta">
